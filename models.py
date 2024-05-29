@@ -18,6 +18,7 @@ class Customer(Base):
     last_name = Column(String, nullable=False)
     age = Column(Integer)
     dob = Column(Date)
+    email = Column(String, nullable=True) 
     location_id = Column(Integer, ForeignKey('locations.id'))
 
     location = relationship("Location", back_populates="customers")
