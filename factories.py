@@ -35,6 +35,7 @@ class CustomerFactory(factory.alchemy.SQLAlchemyModelFactory):
     last_name = factory.LazyAttribute(lambda x: faker.last_name())
     age = factory.LazyAttribute(lambda x: faker.random_int(min=18, max=90))
     dob = factory.LazyAttribute(lambda x: faker.date_of_birth(minimum_age=18, maximum_age=90))
+    email = factory.LazyAttribute(lambda o: f"{o.first_name.lower()}.{o.last_name.lower()}@example.com")
     location = factory.SubFactory(LocationFactory)
     interests = factory.RelatedFactoryList(InterestFactory, size=2)
 
